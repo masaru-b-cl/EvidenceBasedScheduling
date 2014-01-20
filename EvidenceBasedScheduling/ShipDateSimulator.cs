@@ -22,7 +22,7 @@ namespace EvidenceBasedScheduling
             var simulator = new RemeiningHoursSimulator(dice);
             var calculator = new WorkDayCalculator(baseDate);
 
-            return Enumerable.Range(1, 1000)
+            return Enumerable.Range(1, 100)
                 .Select(_ => simulator.Simulate(estimates))
                 .Select(r => calculator.Calc(r))
                 .ToArray();
