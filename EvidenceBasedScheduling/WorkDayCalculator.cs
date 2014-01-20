@@ -8,10 +8,18 @@ namespace EvidenceBasedScheduling
     public class WorkDayCalculator
     {
         private DateTime baseDate;
+        private DateTime[] holidays;
 
         public WorkDayCalculator(DateTime baseDate)
         {
             this.baseDate = baseDate;
+            this.holidays = new DateTime[0];
+        }
+
+        public WorkDayCalculator(DateTime baseDate, DateTime[] holidays)
+        {
+            this.baseDate = baseDate;
+            this.holidays = holidays;
         }
 
         public DateTime Calc(double remainingHours)
@@ -27,6 +35,10 @@ namespace EvidenceBasedScheduling
                     case DayOfWeek.Saturday:
                         candidateWorkday = candidateWorkday.AddDays(2);
                         break;
+                }
+                if (holidays.Contains(candidateWorkday))
+                {
+                    candidateWorkday = candidateWorkday.AddDays(1);
                 }
                 remeiningDays = remeiningDays - 1;
             }

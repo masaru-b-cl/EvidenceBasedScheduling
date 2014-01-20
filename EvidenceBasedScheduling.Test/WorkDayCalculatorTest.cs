@@ -17,6 +17,7 @@ namespace EvidenceBasedScheduling.Test
 
             workDay.Is(DateTime.Parse("2014/1/6"));
         }
+
         [TestMethod]
         public void 残時間に8を渡すと翌日を戻す()
         {
@@ -27,6 +28,7 @@ namespace EvidenceBasedScheduling.Test
 
             workDay.Is(DateTime.Parse("2014/1/7"));
         }
+
         [TestMethod]
         public void 残時間に0以上8未満の自然数を渡すと翌日を戻す()
         {
@@ -37,6 +39,7 @@ namespace EvidenceBasedScheduling.Test
 
             workDay.Is(DateTime.Parse("2014/1/7"));
         }
+
         [TestMethod]
         public void 残時間に8を超える自然数を渡すと翌々日を戻す()
         {
@@ -47,6 +50,7 @@ namespace EvidenceBasedScheduling.Test
 
             workDay.Is(DateTime.Parse("2014/1/8"));
         }
+
         [TestMethod]
         public void 金曜日の翌営業日は翌週月曜()
         {
@@ -57,6 +61,7 @@ namespace EvidenceBasedScheduling.Test
 
             workDay.Is(DateTime.Parse("2014/1/20"));
         }
+
         [TestMethod]
         public void 金曜日の6営業日後は翌々週の月曜()
         {
@@ -66,6 +71,18 @@ namespace EvidenceBasedScheduling.Test
             var workDay = calculator.Calc(remainingHours);
 
             workDay.Is(DateTime.Parse("2014/1/27"));
+        }
+
+        [TestMethod]
+        public void 指定した休日はスキップする()
+        {
+            var holidays = new[] { DateTime.Parse("2014/1/13") };
+            var baseDate = DateTime.Parse("2014/1/10");
+            var remainingHours = 0.1d;
+            var calculator = new WorkDayCalculator(baseDate, holidays);
+            var workDay = calculator.Calc(remainingHours);
+
+            workDay.Is(DateTime.Parse("2014/1/14"));
         }
     }
 }
