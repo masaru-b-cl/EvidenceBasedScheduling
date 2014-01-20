@@ -47,5 +47,25 @@ namespace EvidenceBasedScheduling.Test
 
             workDay.Is(DateTime.Parse("2014/1/8"));
         }
+        [TestMethod]
+        public void 金曜日の翌営業日は翌週月曜()
+        {
+            var baseDate = DateTime.Parse("2014/1/17");
+            var remainingHours = 0.1d;
+            var calculator = new WorkDayCalculator(baseDate);
+            var workDay = calculator.Calc(remainingHours);
+
+            workDay.Is(DateTime.Parse("2014/1/20"));
+        }
+        [TestMethod]
+        public void 金曜日の6営業日後は翌々週の月曜()
+        {
+            var baseDate = DateTime.Parse("2014/1/17");
+            var remainingHours = 6.0d /* day */ * 8.0d /* working hours per day */;
+            var calculator = new WorkDayCalculator(baseDate);
+            var workDay = calculator.Calc(remainingHours);
+
+            workDay.Is(DateTime.Parse("2014/1/27"));
+        }
     }
 }

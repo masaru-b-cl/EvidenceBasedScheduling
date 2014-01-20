@@ -17,7 +17,20 @@ namespace EvidenceBasedScheduling
         public DateTime Calc(double remainingHours)
         {
             var remeiningDays = Math.Ceiling(remainingHours / 8.0d);
-            return baseDate.AddDays(remeiningDays);
+
+            var candidateWorkday = baseDate;
+            while (remeiningDays != 0)
+            {
+                candidateWorkday = candidateWorkday.AddDays(1);
+                switch (candidateWorkday.DayOfWeek)
+                {
+                    case DayOfWeek.Saturday:
+                        candidateWorkday = candidateWorkday.AddDays(2);
+                        break;
+                }
+                remeiningDays = remeiningDays - 1;
+            }
+            return candidateWorkday;
         }
     }
 }
