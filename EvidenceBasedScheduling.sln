@@ -7,9 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvidenceBasedScheduling", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvidenceBasedScheduling.Test", "EvidenceBasedScheduling.Test\EvidenceBasedScheduling.Test.csproj", "{DFDB04AD-E0A7-4F55-939A-FF34B63DBEC9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution-files", "solution-files", "{228E6FD8-32A9-4AF1-AF9B-84956850E09F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9FE47D27-9E93-4243-A741-E3DEAB354852}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global
