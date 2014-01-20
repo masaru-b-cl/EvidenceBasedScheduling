@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using EvidenceBasedScheduling;
 
@@ -15,6 +16,15 @@ namespace EvidenceBasedScheduling.Test
 
             var velocity = dice.Cast();
             velocity.Is(1.0d);
+        }
+        [TestMethod]
+        public void 二つのVelocityを渡すと二つの結果がバラバラに返ってくる()
+        {
+            var velocities = new[] { 2.0d, 3.0d };
+            var dice = new VelocityDice(velocities);
+
+            var actual = Enumerable.Range(1, 100).Select(_ => dice.Cast());
+            actual.Is(x => actual.Contains(2.0d) && actual.Contains(3.0d));
         }
     }
 }

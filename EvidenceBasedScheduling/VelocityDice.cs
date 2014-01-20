@@ -7,7 +7,8 @@ namespace EvidenceBasedScheduling
 {
     public class VelocityDice
     {
-        private double[] velocities;
+        Random rand = new Random();
+        private readonly double[] velocities;
 
         public VelocityDice(double[] velocities)
         {
@@ -16,7 +17,8 @@ namespace EvidenceBasedScheduling
 
         public double Cast()
         {
-            return velocities[0];
+            var index = rand.Next(velocities.Length);
+            return velocities[index];
         }
     }
 }
