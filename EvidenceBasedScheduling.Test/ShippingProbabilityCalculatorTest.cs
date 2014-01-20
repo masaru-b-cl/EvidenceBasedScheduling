@@ -54,5 +54,20 @@ namespace EvidenceBasedScheduling.Test
 
             probability.Is(33.3d);
         }
+
+        [TestMethod]
+        public void すべてのシミュレーション結果以前の日付であれば0パーセントを戻す()
+        {
+            var simulatedShipDates = new[]
+          {
+              DateTime.Parse("2013/1/16"),
+          };
+
+            var calculator = new ShippingProbabilityCalculator(simulatedShipDates);
+            var targetDate = DateTime.Parse("2013/1/15");
+            var probability = calculator.Calc(targetDate);
+
+            probability.Is(0d);
+        }
     }
 }
