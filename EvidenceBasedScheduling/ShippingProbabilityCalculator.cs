@@ -18,7 +18,7 @@ namespace EvidenceBasedScheduling
         {
             var cleared = simulatedShipDates.Count(x => x <= targetDate);
 
-            return cleared / simulatedShipDates.Count() * 100d;
+            return Math.Round(((double)cleared / simulatedShipDates.Count()) * 100d, 1);
         }
     }
 }
