@@ -1,0 +1,25 @@
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using EvidenceBasedScheduling;
+
+namespace EvidenceBasedScheduling.Test
+{
+    [TestClass]
+    public class ShippingProbabilityCalculatorTest
+    {
+      [TestMethod]
+      public void すべてのシミュレーション結果以降の日付であれば100パーセントを戻す()
+      {
+          var simulatedShipDates = new[]
+          {
+              DateTime.Parse("2013/1/15"),
+          };
+
+          var calculator = new ShippingProbabilityCalculator(simulatedShipDates);
+          var targetDate = DateTime.Parse("2013/1/15");
+          var probability = calculator.Calc(targetDate);
+
+          probability.Is(100d);
+      }
+    }
+}

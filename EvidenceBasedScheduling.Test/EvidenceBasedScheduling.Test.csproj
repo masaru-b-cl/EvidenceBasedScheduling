@@ -54,6 +54,7 @@
     <Compile Include="ChainingAssertion.MSTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RemeiningHoursSimulatorTest.cs" />
+    <Compile Include="ShippingProbabilityCalculatorTest.cs" />
     <Compile Include="WorkDayCalculatorTest.cs" />
     <Compile Include="VelocityDiceTest.cs" />
   </ItemGroup>
