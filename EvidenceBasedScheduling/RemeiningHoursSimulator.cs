@@ -5,11 +5,11 @@ using System.Text;
 
 namespace EvidenceBasedScheduling
 {
-    public class HourSimulator
+    public class RemeiningHoursSimulator
     {
         private VelocityDice dice;
 
-        public HourSimulator(VelocityDice dice)
+        public RemeiningHoursSimulator(VelocityDice dice)
         {
             this.dice = dice;
         }

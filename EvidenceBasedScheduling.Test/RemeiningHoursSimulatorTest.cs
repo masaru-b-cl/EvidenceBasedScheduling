@@ -6,13 +6,13 @@ using EvidenceBasedScheduling;
 namespace EvidenceBasedScheduling.Test
 {
     [TestClass]
-    public class HourSimulatorTest
+    public class RemeiningHoursSimulatorTest
     {
         [TestMethod]
         public void ランダムに選択されたVelocityによるシミュレーション結果返ってくる()
         {
             var dice = new VelocityDice(new[] { 1.0d, 0.5d });
-            var simulator = new HourSimulator(dice);
+            var simulator = new RemeiningHoursSimulator(dice);
 
             var estimates = new[] { 1.0d, 1.0d };
             var actual = Enumerable.Range(1, 100).Select(_ => simulator.Simulate(estimates));
