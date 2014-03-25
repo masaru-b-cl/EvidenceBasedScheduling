@@ -1,27 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace EvidenceBasedScheduling
 {
+    /// <summary>
+    /// Calculate workday from base date and holidays.
+    /// </summary>
     public class WorkDayCalculator
     {
         private DateTime baseDate;
-        private DateTime[] holidays;
+        private IEnumerable<DateTime> holidays;
 
+        /// <summary>
+        /// Initialize new WorkDayCalculator class instance with base date.
+        /// </summary>
+        /// <param name="baseDate">Base dates.</param>
         public WorkDayCalculator(DateTime baseDate)
+          : this(baseDate, new DateTime[0])
         {
-            this.baseDate = baseDate;
-            this.holidays = new DateTime[0];
         }
 
-        public WorkDayCalculator(DateTime baseDate, DateTime[] holidays)
+        /// <summary>
+        /// Initialize new WorkDayCalculator class instance with base date and holidays.
+        /// </summary>
+        /// <param name="baseDate">Base dates.</param>
+        /// <param name="holidays">Holidays.</param>
+        public WorkDayCalculator(DateTime baseDate, IEnumerable<DateTime> holidays)
         {
             this.baseDate = baseDate;
             this.holidays = holidays;
         }
 
+        /// <summary>
+        /// Caluculate workday from remaining hours.
+        /// </summary>
+        /// <param name="remainingHours">Remaining hours.</param>
+        /// <returns>Work day.</returns>
         public DateTime Calc(double remainingHours)
         {
             var remeiningDays = Math.Ceiling(remainingHours / 8.0d);

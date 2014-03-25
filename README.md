@@ -13,16 +13,17 @@ This library provides "EBS(Evidence Based Scheduling, see http://www.joelonsoftw
 
         double[] estimates = ...;
         double[] velocities = ...;
+        DateTime[] holidays = ...;
 
 2. create simulator object.
 
 
         var simulator = new ShipDateSimulator(estimates, velocities);
 
-3. simulate ship dates.
+3. simulate ship dates (considering holidays).
 
         var baseDate = DateTime.Parse("2014/1/6");
-        DateTime[] shipDates = simulator.Simulate(baseDate);
+        DateTime[] shipDates = simulator.Simulate(baseDate, holidays);
 
 4. caluculate "n% ship date" or "probability of ship date".
 
@@ -37,7 +38,7 @@ This library provides "EBS(Evidence Based Scheduling, see http://www.joelonsoftw
 
 ## Notice
 
-Current version (0.5) is *very very* alpha version. I may cahnge structure (class name, method signature, and others) of this library, in the future.
+Current version (0.6) is *very* alpha version. I may cahnge structure (class name, method signature, and others) of this library, in the future.
 
 ## License
 
